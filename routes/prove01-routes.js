@@ -39,7 +39,7 @@ const requestHandler = (req, res) => {
 
         req.on('end', () => {
             const parsedBody = Buffer.concat(body).toString();
-           // console.log(parsedBody.split('=')[1]);
+            console.log(parsedBody.split('=')[1]);
             const userNames = parsedBody.split('=')[1];
             fs.writeFileSync('users.txt', userNames);
         });
