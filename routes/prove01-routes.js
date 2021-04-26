@@ -16,18 +16,15 @@ const requestHandler = (req, res) => {
         return res.end();
     }
 
-<<<<<<< HEAD
     if (url === '/users') {
-=======
-     if (url === '/users') {
->>>>>>> 4d3d69846325baaf1846527eeb43a70814b6d728
        
         res.setHeader('Content-Type', 'text/html');
         const names = fs.readFileSync("./users.txt",(err,fileContent) =>{if (err) throw err});
         res.write('<html>');
         res.write('<head><title>Assignment 1</title></head>');
         res.write('<h1>Available Users</h1>')
-        res.write('<body><ul><li>Harry</li><li>Ted</li><li>Karen</li><li></li></ul></body>');      
+        res.write('<body><ul><li>Harry</li><li>Ted</li><li>Karen</li><li></li></ul></body>'); 
+        res.write('<p>New Users</p>')     
         res.write(names);
         res.write('</html>');
 
