@@ -16,7 +16,11 @@ const requestHandler = (req, res) => {
         return res.end();
     }
 
+<<<<<<< HEAD
     if (url === '/users') {
+=======
+     if (url === '/users') {
+>>>>>>> 4d3d69846325baaf1846527eeb43a70814b6d728
        
         res.setHeader('Content-Type', 'text/html');
         const names = fs.readFileSync("./users.txt",(err,fileContent) =>{if (err) throw err});
