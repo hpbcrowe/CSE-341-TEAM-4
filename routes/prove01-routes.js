@@ -16,13 +16,18 @@ const requestHandler = (req, res) => {
         return res.end();
     }
 
-    if (url === '/users') {
+     if (url === '/users') {
+       
         res.setHeader('Content-Type', 'text/html');
+        const names = fs.readFileSync("./users.txt",(err,fileContent) =>{if (err) throw err});
         res.write('<html>');
         res.write('<head><title>Assignment 1</title></head>');
         res.write('<h1>Available Users</h1>')
-        res.write('<body><ul><li>Harry</li><li>Ted</li><li>Karen</li></ul><p><iframe src="users.txt"></iframe></p></body>');
+        res.write('<body><ul><li>Harry</li><li>Ted</li><li>Karen</li><li></li></ul></body>');      
+        res.write(names);
         res.write('</html>');
+
+        //fs.readFile();
         return res.end();
     }
 
