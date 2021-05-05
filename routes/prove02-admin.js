@@ -7,8 +7,8 @@ const express = require('express');
 const router = express.Router();
 
 const products = [];
-//const info = [];
-const book = {title: 'Any Book', description: 'A boring book'}
+const info = [];
+//const book = {title: 'Any Book', description: 'A boring book'}
 // GET -> /prove02-admin/
 // router.get('/')
 // No Function Defined yet
@@ -27,10 +27,13 @@ router.get('/prove02-add-product', (req, res, next) => {
 
 router.post('/prove02-add-product', (req, res, next) => {
     products.push({title: req.body.title });
+    info.push({description: req.body.description});
     
     //info.push({description: req.body.description });
     res.redirect('/prove02-shop/');
+    
 });
 
 exports.routes = router;
 exports.products = products;
+exports.info =  info;

@@ -13,10 +13,10 @@ const router = express.Router();
 // GET -> /prove02-shop/
 router.get('/', (req, res, next) => {
 const products = adminData.products;
-const description = adminData.description;
+const details = adminData.details;
 res.render('pages/prove02-shop', {
     prods: products,
-    descrip: description,
+    dets: details,
     title: 'Shop',
     path: '/',
     hasProducts: products.length > 0,
