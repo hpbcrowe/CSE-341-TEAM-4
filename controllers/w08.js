@@ -1,4 +1,5 @@
 // Controller for W08
+//In team activity we didn't use https
 const https = require('https')
 
 const ITEMS_PER_PAGE = 10 // Limit of 10 items per page.
@@ -40,7 +41,7 @@ exports.processJson = (req, res, next) => {
 
             response.on('end', function () {
                 global.jsonResponse = JSON.parse(body)
-                // Simplifying W03 rendering...
+                // Simplifying W03 rendering don't understand this
                 renderIndex(req, res, global.jsonResponse)
             })
         })
@@ -49,7 +50,7 @@ exports.processJson = (req, res, next) => {
         })
 }
 
-// New code for W08...
+//Instructor says this is new
 exports.getIndex = (req, res, next) => {
     renderIndex(req, res, global.jsonResponse) // Render page.
 }
