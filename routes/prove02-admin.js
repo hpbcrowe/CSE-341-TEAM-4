@@ -2,11 +2,13 @@ const path = require('path');
 
 const express = require('express');
 
+const adminController = require('../controllers/admin');
+
 //const rootDir = require('/..util/path');
 
 const router = express.Router();
 
-const products = [];
+
 const info = [];
 //const book = {title: 'Any Book', description: 'A boring book'}
 // GET -> /prove02-admin/
@@ -15,25 +17,15 @@ const info = [];
 
 
 // GET -> /prove02-admin/prove02-add-product
-router.get('/prove02-add-product', (req, res, next) => {
-    res.render('pages/prove02-addProduct', {
-        title: 'Add Product',
-        path: '/prove02-admin/prove02-add-product',
-        formsCSS: true,
-        productCSS: true,
-        activeAddProduct: true
-    });
-});
+router.get('/prove02-add-product', adminController.getAddProduct);
 
-router.post('/prove02-add-product', (req, res, next) => {
-    products.push({title: req.body.title });
-    info.push({description: req.body.description});
-    
-    //info.push({description: req.body.description });
-    res.redirect('/prove02-shop/');
-    
-});
 
-exports.routes = router;
-exports.products = products;
+// GET -> /prove02-admin/products
+router.get('/products', adminController.getProducts);
+
+router.post('/prove02-add-product', adminController.postAddProduct);
+
+exports.routes = router; 
+//module.exports = router;
+
 exports.info =  info;

@@ -1,10 +1,10 @@
-<%- include('../partials/prove02-head.ejs') %>
+<%- include('../includes/prove02-head.ejs') %>
 
 <link rel="stylesheet" href="/stylesheets/prove02-product.css">
 </head>
 
 <body>
-<%- include('../partials/prove02-navigation.ejs') %>
+<%- include('../includes/prove02-navigation.ejs') %>
 
 <main>
     <% if (prods.length > 0) { %>
@@ -15,11 +15,12 @@
                         <h1 class="product__title"><%= product.title %></h1>
                     </header>
                     <div class="card__image">
-                        <img src="https://images.pexels.com/photos/415071/pexels-photo-415071.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"  alt="A Book">
+                        <img src="<%= product.imageURL %>" 
+                         alt="<%= product.title %>">
                     </div>
                     <div class="card__content">
-                        <h2 class="product__price">$19.99</h2>
-                        <p class="product__description">A very interesting book about so many even more interesting things!</p>
+                        <h2 class="product__price">$<%= product.price %></h2>
+                        <p class="product__description"><%= product.description %></p>
                     </div>
                     <div class="card__actions">
                         <button class="btn">Add to Cart</button>
@@ -32,13 +33,13 @@
     <% } %>
 
 
-<%- include('../partials/prove02-head.ejs') %>
+<%- include('../includes/prove02-head.ejs') %>
     <link rel="stylesheet" href="/stylesheets/prove02-forms.css">
     <link rel="stylesheet" href="/stylesheets/prove02-product.css">
 </head>
 
 <body>
-   <%- include('../partials/prove02-navigation') %>
+   <%- include('../includes/prove02-navigation') %>
 
     <main>
         <form class="product-form" action="/admin/add-product" method="POST">
@@ -51,4 +52,4 @@
         </form>
     </main>
 
-    <%- include('../partials/prove02-end.ejs') %> 
+    <%- include('../includes/prove02-end.ejs') %> 
