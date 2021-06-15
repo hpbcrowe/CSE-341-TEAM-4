@@ -40,6 +40,7 @@
   <a href="?page=<%= i %><%= (searchedValue) ? `&searchValue=${searchedValue}` :  "" %>" class="btn <%= (page==i) ? 'btn-primary' : 'btn-default' %>"><%= i %></a>
   <% } %> -->
   <section class="pagination">
+        
     <% if (currentPage !== 1 && previousPage !== 1) { %>
         <a href="?page=1">1</a>
     <% } %>
@@ -53,6 +54,7 @@
     <% if (lastPage !== currentPage && nextPage !== lastPage) { %>
         <a href="?page=<%= lastPage %>"><%= lastPage %></a>
     <% } %>
+        
 </section>
 </div>
 </body>

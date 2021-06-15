@@ -12,10 +12,9 @@ const renderIndex = (req, res, json) => {
     const indexEnd = page * ITEMS_PER_PAGE
     let totalItems; 
 
-    const filteredData = global.jsonResponse.filter(x =>
-        x.name.toLowerCase().includes(searchedValue.toLowerCase())
+   const filteredData = global.jsonResponse.filter(x => x.name.toLowerCase() //.includes(searchedValue.toLowerCase())
     )
-        totalItems = filteredData.length;
+        totalItems = +filteredData.length;
     let stuff = {
         data: filteredData.slice(indexStart, indexEnd), // For JSON/Array and not Mongoose, .slice() works best.
         path: 'proveAssignments/03',
@@ -23,7 +22,7 @@ const renderIndex = (req, res, json) => {
         searchedValue: searchedValue,
         totalProducts: totalItems,
         currentPage: page,
-        hasNextPage: ITEMS_PER_PAGE * page < filteredData,
+        hasNextPage: ITEMS_PER_PAGE * page < totalItems,
         hasPreviousPage: page > 1,
         nextPage: page + 1,
         previousPage: page - 1,
