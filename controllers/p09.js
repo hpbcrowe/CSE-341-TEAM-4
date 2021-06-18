@@ -3,10 +3,10 @@
  
 const model = require('../models/pokemonModel');
 
-exports.getPokemon = (pageNum, callback) => {
+exports.getPokemon = (page, callback) => {
     //Remember Page 1 will have an offset of 0
 
-   const offset = 10 * (pageNum - 1);
+   const offset = 10 * (page - 1);
    model.getPokemon(offset, (data) => {
        callback(data);
    });
