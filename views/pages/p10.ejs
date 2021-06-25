@@ -1,0 +1,27 @@
+<% include  ../includes/header.ejs %>
+<title><%= title %></title>
+<link href="/stylesheets/ta03.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload="populateList()">
+<% include ../includes/nav.ejs %>
+
+<div class="container">
+    <h1>Names:</h1>
+    <ul id="nameList" class="" >
+    </ul>
+    <ul onload="populateList()" ></ul>
+   
+            
+  
+    <h2>Submit a name</h2>
+    <div class="actions_container">
+        <input type="text" id="newName">
+        <button id="submitName" onclick="submitName(); populateList()">Submit</button>
+    </div>
+    <div id=""></div>
+</div>
+
+
+<script src="/scripts/pr10-client.js"></script>
+</body>
+</html>
