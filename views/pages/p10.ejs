@@ -5,15 +5,15 @@
 <body onload="populateList()">
 <% include ../includes/nav.ejs %>
 
-<div class="container">
-    <h1>Names:</h1>
+<div class="avengers">
+    <h1>Names of Avengers:</h1>
     <ul id="nameList" class="" >
     </ul>
     <ul onload="populateList()" ></ul>
    
             
   
-    <h2>Submit a name</h2>
+    <h2>Submit an Additional Name</h2>
     <div class="actions_container">
         <input type="text" id="newName">
         <button id="submitName" onclick="submitName(); populateList()">Submit</button>

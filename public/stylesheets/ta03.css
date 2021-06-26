@@ -4,6 +4,7 @@
     justify-content: space-between;
     gap: 1rem;
     margin: 1rem auto;
+    text-align: center;
 }
 
 .product-image {
@@ -48,3 +49,26 @@
     background: #0065BD;
     color: white;
   }
+
+
+.actions_container {
+    text-align:center;
+    color: blue;
+  }
+  
+.avengers {
+  text-align: center;
+  list-style-position: inside; 
+  background: #34638b;
+  color: white;
+  border-radius: 20pt;
+  padding-top: 20pt;
+  padding-bottom: 30pt;
+
+}
+
+.avengers.nameList {
+
+  color: white;
+
+}
