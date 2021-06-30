@@ -22,6 +22,7 @@ router.post('/insertName', (req, res, next) => {
     if (req.body.newName !== undefined) {
         const newName = req.body.newName;
         const newPower = req.body.newPower;
+        const newAge = req.body.newAge;
         let avengers = fs.readFileSync('data/ta11.json', 'utf-8');
         console.log(avengers);
         let names = JSON.parse(avengers);
@@ -30,7 +31,7 @@ router.post('/insertName', (req, res, next) => {
 
 // 
              if (!dummyData.avengers.some(a => a.name === newName)) {
-            names.avengers.push({ name: newName, power: newPower }) // Push new object 
+            names.avengers.push({ name: newName, power: newPower, age: newAge }) // Push new object 
             res.status(200).json({ success:true })
             fs.writeFileSync('data/ta11.json',JSON.stringify(names), 'utf-8')
          }
