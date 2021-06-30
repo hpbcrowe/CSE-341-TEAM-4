@@ -14,9 +14,15 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+//
 const PORT = process.env.PORT || 5000 // So we can run on heroku || (OR) localhost:5000
 
 const app = express();
+const http = require('http');
+const server = http.createServer(app);
+const socketIo = require("socket.io");
+const io = socketIo(server);
+
 
 // Route setup. You can implement more in the future!
 const ta01Routes = require('./routes/ta01');
@@ -26,6 +32,8 @@ const ta04Routes = require('./routes/ta04');
 const w08Routes = require('./routes/w08');
 const p09Routes = require('./routes/p09');
 const p10Routes = require('./routes/p10');
+const p11Routes = require('./routes/p11');
+// const io  = require('socket.io-client');
 
 app.use(express.static(path.join(__dirname, 'public')))
    .set('views', path.join(__dirname, 'views'))
@@ -43,6 +51,7 @@ app.use(express.static(path.join(__dirname, 'public')))
    .use('/w08', w08Routes)
    .use('/p09', p09Routes)
    .use('/p10', p10Routes)
+   .use('/p11', p11Routes)
    .get('/', (req, res, next) => {
      // This is the primary index, always handled last. 
      res.render('pages/index', {title: 'Welcome to my CSE341 repo', path: '/'});
@@ -51,4 +60,12 @@ app.use(express.static(path.join(__dirname, 'public')))
      // 404 page
      res.render('pages/404', {title: '404 - Page Not Found', path: req.url})
    })
-   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
+   //const io = require('socket.io');
+    io.on('connection', (socket) => {
+     console.log('a user connected')
+    io.on('new-name', () => {
+       //A user added a new name! This will update the list
+       socket.broadcast.emit('update-list')
+     })
+   })
+   server.listen(PORT, () => console.log(`Listening on ${ PORT }`));

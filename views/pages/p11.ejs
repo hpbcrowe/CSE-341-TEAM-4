@@ -1,0 +1,30 @@
+<% include  ../includes/header.ejs %>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/scripts/pr11-client.js"></script>
+<title><%= title %></title>
+<link href="/stylesheets/ta03.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload="populateList()">
+<% include ../includes/nav.ejs %>
+
+<div class="avengers">
+    <h1>Names of Avengers:</h1>
+    <ul id="nameList" class="" >
+    </ul>
+   
+   
+            
+  
+    <h2>Submit an Additional Name and Their Special Power</h2>
+    <div class="actions_container">
+        <input type="text" id="newName" value="Name"> <input type="text" id="powers" value="Powers">
+        <button id="submitName" onclick="submitName(); populateList()">Submit</button>
+    </div>
+    <div id=""></div>
+</div>
+
+
+
+<!-- <script>var socket =io() </script> -->
+</body>
+</html>
