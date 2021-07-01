@@ -3,41 +3,8 @@ const socket = io();
 
 //repopulate list when server broadcasts and event
 socket.on('update-list', () => {
-    populateList();
+    populateList()
 });
-
-const submitName = () => {
-    const newName = document.getElementById('newName').value // Grab the value of our new name
-    const newPower = document.getElementById('powers').value // Grab the value of our new power
-    const newAge = document.getElementById('age').value // Grab the value of our new age
-    
-    fetch('/p11/insertName', {
-        method: 'POST', // Send a POST request
-        headers: {
-            // Set the Content-Type, since our server expects JSON
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ newName, newPower, newAge })
-
-    })
-        .then(res => {
-            // Clear the input
-            document.getElementById('newName').value = ''
-            document.getElementById('powers').value = ''
-            document.getElementById('age').value = ''
-            console.log(res);
-            // Repopulate the list with our new name added
-            //populateList()
-        })
-        .catch(err => {
-            // Clear the input
-            document.getElementById('newName').value = ''
-            console.error(err)
-            
-        })
-}
-
-// populateList()
 
 const populateList = () => {
     console.log('populating list');
@@ -60,5 +27,43 @@ const populateList = () => {
             console.log(err);
         });
 }
+const submitName = () => {
+    const newName = document.getElementById('newName').value // Grab the value of our new name
+    const newPower = document.getElementById('powers').value // Grab the value of our new power
+    const newAge = document.getElementById('age').value // Grab the value of our new age
+    
+    fetch('/p11/insertName', {
+        method: 'POST', // Send a POST request
+        headers: {
+            // Set the Content-Type, since our server expects JSON
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ newName, newPower, newAge })
 
+    })
+        .then(res => {
+            // Clear the input
+            document.getElementById('newName').value = ''
+            document.getElementById('powers').value = ''
+            document.getElementById('age').value = ''
+            console.log(res);
+            // Repopulate the list with our new name added
+            populateList()
+
+            //Tell the server to broadcast changes to other users
+            socket.emit('new-name')
+        })
+        .catch(err => {
+            // Clear the input
+            document.getElementById('newName').value = ''
+            console.error(err)
+            
+        })
+}
+
+// populateList()
+
+
+
+//INITIALIZE LIST
 populateList()

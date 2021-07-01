@@ -63,7 +63,8 @@ app.use(express.static(path.join(__dirname, 'public')))
    //const io = require('socket.io');
     io.on('connection', (socket) => {
      console.log('a user connected')
-    io.on('new-name', () => {
+     
+     socket.on('new-name', () => {
        //A user added a new name! This will update the list
        socket.broadcast.emit('update-list')
      })
